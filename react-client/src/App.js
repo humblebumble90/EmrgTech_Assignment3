@@ -21,11 +21,11 @@ import ShowArticle from './components/ShowArticle';
 
 import Home from './components/Home';
 import Login from './components/Login';
-import AddCourse from './components/AddCourse';
 import ShowCourse from './components/ShowCourse';
 import EditCourse from './components/EditCourse';
 import CreateStudent from './components/CreateStudent';
 import ListStudents from './components/ListStudents';
+import CreateCourse from './components/CreateCourse';
 //
 function App() {
 
@@ -60,7 +60,7 @@ function App() {
 
           <Route render ={()=> < CreateStudent />} path="/createStudent" />
           <Route render ={()=> < ListStudents />} path="/listStudents" />
-          <Route render ={()=> < AddCourse />} path="/addCourse/:id" />
+          <Route render ={()=> < CreateCourse />} path="/addCourse/:id" />
           <Route render ={()=> < ShowCourse />} path="/showcourse/:id" />
           <Route render ={()=> < EditCourse />} path="/editcourse/:id" />
 

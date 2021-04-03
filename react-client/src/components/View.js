@@ -1,4 +1,5 @@
 import CreateArticle from './CreateArticle';
+import ListArticles from './ListArticles';
 import React, { useState } from 'react';
 //
 import axios from 'axios';
@@ -27,20 +28,18 @@ function View (props) {
   const verifyCookie = async () => {
     try {
       const res = await axios.get('/welcome');
-      console.log(res.data)
+      console.log(res.data);
       setData(res.data);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
   //
   const listArticles = (username) => {
 
-    console.log('in lisArticles: ',username)
-    //setArticle('n')
-
+    console.log('in lisArticles: ',username);
+    setArticle('n');
   }
-  //
   const createArticle = () => {
     console.log('in createArticle')
     setArticle('y')
@@ -55,11 +54,17 @@ function View (props) {
             <p>{data}</p>
             <button onClick={verifyCookie}>Verify Cookie</button>
             <button onClick={createArticle}>Create Article</button>
-            <button onClick={listArticles(data)}>List Articles</button>
-
+            <button onClick={listArticles}>List Articles</button>
             <button onClick={deleteCookie}>Log out</button>
           </div>            
         : <CreateArticle screen={screen} setScreen={setScreen} />
+      }
+      {
+        article == 'n'
+        ?
+        <ListArticles screen={screen} setScreen={setScreen} />
+        :<div></div>
+        
       }
     </div>
   );

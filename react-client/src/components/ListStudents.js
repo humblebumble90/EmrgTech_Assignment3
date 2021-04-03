@@ -5,7 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
 import Login from './Login';
 
-function List(props) {
+function ListStudent(props) {
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
   const [listError, setListError] = useState(false);
@@ -47,7 +47,10 @@ function List(props) {
           </Spinner> }
           <ListGroup>
             {data.map((item, idx) => (
-              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>{item.studentNumber}</ListGroup.Item>
+              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>
+                  {item.studentNumber}<br>
+                  </br>
+              </ListGroup.Item>
             ))}
           </ListGroup>
         </div>
@@ -58,4 +61,4 @@ function List(props) {
   );
 }
 //
-export default withRouter(List);
+export default withRouter(ListStudent);
