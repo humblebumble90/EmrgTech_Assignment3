@@ -3,7 +3,7 @@ import axios from 'axios';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
-import Login from './Login';
+import Login from './LoginStudent';
 
 function ListStudent(props) {
   const [data, setData] = useState([]);
@@ -34,7 +34,7 @@ function ListStudent(props) {
 
   const showDetail = (id) => {
     props.history.push({
-      pathname: '/show/' + id
+      pathname: '/showStudent/' + id
     });
   }
 
@@ -48,7 +48,7 @@ function ListStudent(props) {
           <ListGroup>
             {data.map((item, idx) => (
               <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>
-                  {item.studentNumber}<br>
+                  Student NO:{item.studentNumber}&nbsp;Name:{item.fullName}<br>
                   </br>
               </ListGroup.Item>
             ))}

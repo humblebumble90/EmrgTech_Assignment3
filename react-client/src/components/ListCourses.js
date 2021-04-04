@@ -44,8 +44,21 @@ function ListCourses(props) {
             <span className="sr-only">Loading...</span>
           </Spinner> }
           <ListGroup>
+            {data.map((item) => (
+              <ListGroup.Item>
+                <h1>List All courses</h1>
+                <br></br>
+                {item.courseCode}<br>{item.courseName}</br>
+                </ListGroup.Item>
+            ))}
+          </ListGroup>
+          <ListGroup>
             {data.map((item, idx) => (
-              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>{item.courseCode}</ListGroup.Item>
+              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>
+                <h1>List courses of the student</h1>
+                <br></br>
+                {item.courseCode}<br>{item.courseName}</br>
+                </ListGroup.Item>
             ))}
           </ListGroup>
         </div>
