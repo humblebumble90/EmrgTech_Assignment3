@@ -86,6 +86,7 @@ exports.update = function (req, res) {
     course.courseCode = req.body.courseCode;
     course.section = req.body.section;
     course.semester = req.body.semester;
+    
     course.save((err) => {
         if (err) {
             return res.status(400).send({
