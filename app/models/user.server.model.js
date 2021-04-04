@@ -7,6 +7,16 @@ const Schema = mongoose.Schema;
 //
 // Define a new 'UserSchema'
 var UserSchema = new Schema({
+	studentNumber:String,
+	address: String,
+	city: String,
+	phoneNumber: {
+		type:Number,
+		unique: true,
+		validate: [(password) => {
+			password.length > 10
+		},"The length must be 10"]
+	},
     firstName: String,
 	lastName: String,
 	email: {
@@ -66,4 +76,4 @@ UserSchema.set('toJSON', {
 });
 
 // Create the 'User' model out of the 'UserSchema'
-mongoose.model('User', UserSchema);
+mongoose.model('Student', UserSchema);

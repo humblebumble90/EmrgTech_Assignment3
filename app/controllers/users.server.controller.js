@@ -1,5 +1,5 @@
 ﻿// Load the module dependencies
-const User = require('mongoose').model('User');
+const User = require('mongoose').model('Student');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../../config/config');
@@ -34,6 +34,7 @@ const getErrorMessage = function(err) {
 	// Return the message error
 	return message;
 };
+
 // Create a new user
 exports.create = function (req, res, next) {
     // Create a new instance of the 'User' Mongoose model
