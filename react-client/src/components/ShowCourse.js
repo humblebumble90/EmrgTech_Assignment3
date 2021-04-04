@@ -48,14 +48,14 @@ function ShowCourse(props) {
         <span className="sr-only">Loading...</span>
       </Spinner> }    
       <Jumbotron>
-        <p>CourseCode: {data.CourseCode}</p>
+        <p>CourseCode: {data.courseCode}</p>
         <p>CourseName: {data.courseName}</p>
-        <p>CourseSection: {data.courseSection}</p>
+        <p>CourseSection: {data.section}</p>
         <p>Semester: {data.semester}</p>
 
         <p>
           <Button type="button" variant="primary" onClick={() => { editCourse(data._id) }}>Edit</Button>&nbsp;
-          <Button type="button" variant="danger" onClick={() => { deleteCourse(data._id) }}>Delete</Button>
+          <Button type="button" variant="danger" onClick={() => { deleteCourse(data._id) }}>Drop</Button>
         </p>
       </Jumbotron>
     </div>

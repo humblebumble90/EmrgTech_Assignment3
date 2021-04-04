@@ -1,7 +1,10 @@
-import CreateArticle from './CreateArticle';
+import CreateCourse from './CreateCourse';
+import ListCourse from './ListCourses';
+
 import React, { useState } from 'react';
 //
 import axios from 'axios';
+import { Redirect } from 'react-router';
 //
 function View (props) {
   // read the info from props, coming from the ancestor component
@@ -27,22 +30,24 @@ function View (props) {
   const verifyCookie = async () => {
     try {
       const res = await axios.get('/welcome');
-      console.log(res.data)
+      console.log(res.data);
       setData(res.data);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
   //
-  const listArticles = (username) => {
+  const listCourses = (studentNumber) => {
 
-    console.log('in lisArticles: ',username)
-    //setArticle('n')
-
+    console.log('in listCourses: ',studentNumber);
+    try {
+      setArticle('n')
+    } catch (e) {
+      console.log(e);
+    }
   }
-  //
-  const createArticle = () => {
-    console.log('in createArticle')
+  const createCourses = () => {
+    console.log('in createCourses')
     setArticle('y')
 
   }
@@ -54,12 +59,18 @@ function View (props) {
             <p>{screen}</p>
             <p>{data}</p>
             <button onClick={verifyCookie}>Verify Cookie</button>
-            <button onClick={createArticle}>Create Article</button>
-            <button onClick={listArticles(data)}>List Articles</button>
-
+            <button onClick={createCourses}>Create Courses</button>
+            <button onClick={listCourses}>List Courses</button>
             <button onClick={deleteCookie}>Log out</button>
-          </div>            
-        : <CreateArticle screen={screen} setScreen={setScreen} />
+          </div>
+        : <CreateCourse screen={screen} setScreen={setScreen} />
+      }
+      {
+        article == 'n'
+        ?
+        <ListCourse screen={screen} setScreen={setScreen} />
+        :<div></div>
+        
       }
     </div>
   );

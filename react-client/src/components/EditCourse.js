@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 function EditCourse(props) {
   console.log('edituser props:',props.match.params)
-  const [course, setCourse] = useState({ _id: '',courseCode: '', courseName: '', courseSection: ''
+  const [course, setCourse] = useState({ _id: '',courseCode: '', courseName: '', section: ''
   , semester:'' });  
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/api/courses/" + props.match.params.id;
@@ -29,8 +29,8 @@ function EditCourse(props) {
   const updateCourse = (e) => {
     setShowLoading(true);
     e.preventDefault();
-    const data = {courseCode: course.CourseCode, courseName: course.courseName, 
-        courseSection: course.courseSection,semester: course.semester  };
+    const data = {courseCode: course.courseCode, courseName: course.courseName, 
+      section: course.section,semester: course.semester  };
     axios.put(apiUrl, data)
       .then((result) => {
         console.log('after calling put to update',result.data )
@@ -67,8 +67,8 @@ function EditCourse(props) {
 
               <Form.Group>
                 <Form.Label> Course section</Form.Label>
-                <Form.Control type="text" name="courseSection" id="courseSection"
-                placeholder="Enter course section" value={course.courseSection} onChange={onChange} />
+                <Form.Control type="text" name="section" id="section"
+                placeholder="Enter course section" value={course.section} onChange={onChange} />
               </Form.Group>
 
               <Form.Group>

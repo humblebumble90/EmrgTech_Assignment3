@@ -24,7 +24,7 @@ function App() {
       const loginData = { auth: { username, password } }
       //call api
       const res = await axios.post(apiUrl, loginData);
-      console.log(res.data.auth)
+      console.log(res.data.auth.username)
       console.log(res.data.screen)
       //process the response
       if (res.data.screen !== undefined) {

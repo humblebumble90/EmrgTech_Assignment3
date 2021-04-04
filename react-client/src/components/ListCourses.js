@@ -22,6 +22,7 @@ function ListCourses(props) {
             console.log('data in if:', result.data )
             setData(result.data);
             setShowLoading(false);
+            console.log('Arrived before return');
           //}
         }).catch((error) => {
           console.log('error in fetchData:', error)
@@ -44,8 +45,14 @@ function ListCourses(props) {
             <span className="sr-only">Loading...</span>
           </Spinner> }
           <ListGroup>
+            <h1>List courses of the student</h1>
             {data.map((item, idx) => (
-              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>{item.courseCode}</ListGroup.Item>
+              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>
+                Coursecode:&nbsp;{item.courseCode}<br></br>
+                CourseName:&nbsp;{item.courseName}<br></br>
+                Section:&nbsp;{item.section}<br></br>
+                Semester:&nbsp;{item.semester}
+                </ListGroup.Item>
             ))}
           </ListGroup>
         </div>

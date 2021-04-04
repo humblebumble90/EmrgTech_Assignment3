@@ -7,18 +7,18 @@ import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 
 function CreateStudent(props) {
-  const [student, setUser] = 
+  const [student, setStudent] = 
   useState({ _id: '', studentNumber:'', password:'',firstName: '', lastName: '', address: '',
-  city:'', phoneNumber:'',email: '', program:'' });
+  phoneNumber:'', city:'',email: '', program:'' });
   const [showLoading, setShowLoading] = useState(false);
-  const apiUrl = "http://localhost:3000/";
+  const apiUrl = "http://localhost:3000/createStudent";
 
   const saveStudent = (e) => {
     setShowLoading(true);
     e.preventDefault();
     const data = 
     { studentNumber: student.studentNumber, password: student.password, firstName: student.firstName, lastName: student.lastName, 
-      phoneNumber: student.phoneNumber,email: student.email,program: student.program};
+      phoneNumber: student.phoneNumber,city: student.city,email: student.email,program: student.program};
     axios.post(apiUrl, data)
       .then((result) => {
         setShowLoading(false);
@@ -28,7 +28,7 @@ function CreateStudent(props) {
 
   const onChange = (e) => {
     e.persist();
-    setUser({...student, [e.target.name]: e.target.value});
+    setStudent({...student, [e.target.name]: e.target.value});
   }
 
   return (
@@ -62,6 +62,11 @@ function CreateStudent(props) {
             <Form.Label>Phone Number</Form.Label>
             <Form.Control type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter phone Number"
              value={student.phoneNumber} onChange={onChange} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>City </Form.Label>
+            <Form.Control type="text" name="city" id="city" placeholder="Enter city"
+             value={student.city} onChange={onChange} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Email</Form.Label>

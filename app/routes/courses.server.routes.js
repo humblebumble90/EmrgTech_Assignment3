@@ -1,16 +1,17 @@
-﻿const users = require('../controllers/users.server.controller');
-const course = require('../controllers/courses.server.controller');
+const students = require('../../app/controllers/students.server.controller');
+const courses = require('../../app/controllers/courses.server.controller');
 //
 module.exports = function (app) {
-        app.route('api/createcourse')
-            .put(course.create)
-            .post(users.requiresLogin,course.create);
-        app.route('/api/getcourses/:userId')
-            .get(course.getCourses)
-            .put(users.requiresLogin, course.hasAuthorization, course.update)
-            .delete(users.requiresLogin, course.hasAuthorization, course.delete);
-        app.route('/api/allcourses')
-            .get(course.listAll)
-            .put(users.requiresLogin, course.hasAuthorization, course.update)
-            .delete(users.requiresLogin, course.hasAuthorization, course.delete);
+        app.route('/api/courses')
+            .get(courses.list)
+            .post(students.requiresLogin, courses.create);
+        //
+        app.route('/api/courses/:courseId')
+            .get(courses.read)
+            .put(students.requiresLogin, courses.hasAuthorization, courses.
+                update)
+            .delete(students.requiresLogin, courses.hasAuthorization, courses.
+                delete);
+        //
+        app.param('courseId', courses.courseByID);
 };

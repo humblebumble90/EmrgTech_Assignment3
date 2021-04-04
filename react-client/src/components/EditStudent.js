@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 function EditStudent(props) {
   const [student, setStudent] =   useState({ _id: '', studentNumber:'', password:'',firstName: '', lastName: '', address: '',
-  city:'', phoneNumber:'',email: '', program:'' });  
+  phoneNumber:'',city: '',email: '', program:'' });  
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/students/" + props.match.params.id;
   //runs only once after the first render
@@ -30,11 +30,11 @@ function EditStudent(props) {
     e.preventDefault();
     const data = 
     { studentNumber: student.studentNumber, password: student.password, firstName: student.firstName, lastName: student.lastName, 
-      phoneNumber: student.phoneNumber,email: student.email,program: student.program};
+      phoneNumber: student.phoneNumber,city: student.city,email: student.email,program: student.program};
     axios.put(apiUrl, data)
       .then((result) => {
         setShowLoading(false);
-        props.history.push('/show/' + result.data._id)
+        props.history.push('/showStudent/' + result.data._id)
       }).catch((error) => setShowLoading(false));
   };
   //runs when user enters a field
@@ -74,6 +74,11 @@ function EditStudent(props) {
             <Form.Label>Phone Number</Form.Label>
             <Form.Control type="text" name="phoneNumber" id="phoneNumber" placeholder="Enter phone Number"
              value={student.phoneNumber} onChange={onChange} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>City </Form.Label>
+            <Form.Control type="text" name="city" id="city" placeholder="Enter city"
+             value={student.city} onChange={onChange} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Email</Form.Label>

@@ -4,6 +4,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
 import Login from './Login';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 function List(props) {
   const [data, setData] = useState([]);
@@ -41,13 +42,17 @@ function List(props) {
   return (
     <div>
       { data.length !== 0
-        ? <div>
+        ?
+        <div>
           {showLoading && <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner> }
           <ListGroup>
-            {data.map((item, idx) => (
-              <ListGroup.Item key={idx} action onClick={() => { showDetail(item._id) }}>{item.username}</ListGroup.Item>
+            {data.map((item, idx) => ( //item.firstName === 'John' ?
+              <ListGroup.Item key={idx} action onClick={() =>
+                 { showDetail(item._id) }}>{item.username}<br></br>
+              </ListGroup.Item>
+              //:<div>condition</div>
             ))}
           </ListGroup>
         </div>

@@ -20,12 +20,15 @@ import ShowUser from './components/ShowUser';
 import ShowArticle from './components/ShowArticle';
 
 import Home from './components/Home';
-import Login from './components/Login';
-import AddCourse from './components/AddCourse';
+import Login from './components/LoginStudent';
 import ShowCourse from './components/ShowCourse';
 import EditCourse from './components/EditCourse';
 import CreateStudent from './components/CreateStudent';
 import ListStudents from './components/ListStudents';
+import ListCourses from './components/ListCourses';
+import CreateCourse from './components/CreateCourse';
+import ShowStudent from './components/ShowStudent';
+import EditStudent from './components/EditStudent';
 //
 function App() {
 
@@ -37,18 +40,14 @@ function App() {
           <Nav className="mr-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/list">List of Users</Nav.Link>
-            <Nav.Link href="/create">Sign Up</Nav.Link>
-
             <Nav.Link href="/createStudent">Sign Up</Nav.Link>
-            <Nav.Link href="/addCourse">Add course</Nav.Link>
             <Nav.Link href="/listStudents">List of Students</Nav.Link>
             
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     
-      <div>          
+      <div>        
           <Route render ={()=> < Home />} path="/home" />
           <Route render ={()=> < Login />} path="/login" />
           <Route render ={()=> < List />} path="/list" />
@@ -59,10 +58,14 @@ function App() {
           <Route render ={()=> < EditArticle />} path="/editarticle/:id" />
 
           <Route render ={()=> < CreateStudent />} path="/createStudent" />
+          <Route render ={()=> < ShowStudent />} path="/showStudent/:id" />
+          <Route render ={()=> < EditStudent />} path="/editStudent/:id" />
           <Route render ={()=> < ListStudents />} path="/listStudents" />
-          <Route render ={()=> < AddCourse />} path="/addCourse/:id" />
+          <Route render ={()=> < CreateCourse />} path="/addCourse/:id" />
           <Route render ={()=> < ShowCourse />} path="/showcourse/:id" />
-          <Route render ={()=> < EditCourse />} path="/editcourse/:id" />
+          <Route render ={()=> < EditCourse />} path="/editCourses/:id" />
+          <Route render ={()=> < ListCourses />} path="/listCourses" />
+
 
       </div>
 
