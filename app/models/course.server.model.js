@@ -9,7 +9,7 @@ const ArticleSchema = new Schema({
         type: String,
         default:'',
         trim: true,
-        //required: 'courseCode cannot be blank'
+        required: 'courseCode cannot be blank'
     },
     courseName: {
         type: String,
@@ -27,8 +27,8 @@ const ArticleSchema = new Schema({
         trim: true,
         required: 'semester cannot be blank'
     },
-    student:{
-        type: Schema.ObjectId,
+    students:{
+        type: [Schema.ObjectId],
         ref: 'Student'
     }
 });

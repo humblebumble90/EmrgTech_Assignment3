@@ -75,6 +75,47 @@ exports.courseByID = function (req, res, next, id) {
     });
 };
 //
+
+exports.getStudentsByCourseCode = function(req,res){
+    Course.findById(req.params.courseId,function(err,obj){
+        if(err){
+            res.status(400).send({
+                message: getErrorMessage(err)
+            })
+        }
+        else {
+            const objects = {students: []}
+            obj.students.forEach(element => {
+                Student.findById(element, function(err,obj){
+                    if(err){
+                        res.status(400).send({
+                            message: getErrorMessage(err)
+                        })
+                    }
+                    else{
+                        objects.students.push(obj);
+                    }
+                })
+            });
+            res.status(200).json(objects)
+        }
+    })
+}
+
+exports.addStudentToCourse = function(req,res){
+    const course = req.body.course;
+    course.students.push(req.body.student);
+    Course.findByIdAndUpdate(course._id,course,function(err,obj){
+        if(err){
+            res.status(400).send({
+                message: getErrorMessage(err)
+            })
+        }
+        else{
+            res.status(200).json({course: course})
+        }
+    })
+}
 exports.read = function (req, res) {
     res.status(200).json(req.course);
 };
