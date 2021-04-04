@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
 
 function ShowStudent(props) {
-    console.log('qweqweqeqeqweqweqwe');
   const [data, setData] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const apiUrl = "http://localhost:3000/students/" + props.match.params.id;
@@ -17,8 +16,6 @@ function ShowStudent(props) {
       const result = await axios(apiUrl);
       setData(result.data);
       setShowLoading(false);
-      console.log(result.data);
-      
     };
 
     fetchData();
@@ -32,9 +29,9 @@ function ShowStudent(props) {
 
   const deleteStudent = (id) => {
     setShowLoading(true);
-    const student ={ studentNumber: data.studentNumber, password: data.password, firstName: data.firstName,
-         lastName: data.lastName, phoneNumber: data.phoneNumber,city: data.city,email: data.email,
-         program: data.program};
+    const student = { firstName: data.firstName, lastName: data.lastName, 
+      email: data.email,studentNumber: data.studentNumber, password: data.password,
+    phoneNumber: data.phoneNumber, city: data.city, program: data.program};
   
     axios.delete(apiUrl, student)
       .then((result) => {
@@ -42,16 +39,16 @@ function ShowStudent(props) {
         props.history.push('/listStudents')
       }).catch((error) => setShowLoading(false));
   };
-  
+
   return (
     <div>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner> }    
       <Jumbotron>
-      <p>Student NO: {data.studentNumber}</p>
         <h1>Name: {data.firstName}, {data.lastName}</h1>
         <p>Email: {data.email}</p>
+        <p>Student Number: {data.studentNumber}</p>
 
         <p>
           <Button type="button" variant="primary" onClick={() => { editStudent(data._id) }}>Edit</Button>&nbsp;

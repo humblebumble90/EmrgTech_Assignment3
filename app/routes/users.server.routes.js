@@ -28,7 +28,7 @@ module.exports = function (app) {
 
 
     //path to a protected page
-	//app.get('/welcome',users.welcome);
+	app.get('/welcome',users.welcome);
     
 };
 

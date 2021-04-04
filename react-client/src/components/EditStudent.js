@@ -34,7 +34,7 @@ function EditStudent(props) {
     axios.put(apiUrl, data)
       .then((result) => {
         setShowLoading(false);
-        props.history.push('/show/' + result.data._id)
+        props.history.push('/showStudent/' + result.data._id)
       }).catch((error) => setShowLoading(false));
   };
   //runs when user enters a field

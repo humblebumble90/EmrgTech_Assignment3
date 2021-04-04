@@ -126,7 +126,7 @@ exports.authenticate = function(req, res, next) {
 			if(bcrypt.compareSync(password, student.password)) {
 				// Create a new token with the user id in the payload
   				// and which expires 300 seconds after issue
-				const token = jwt.sign({ id: student._id, studentNumber: student.studentNumber }, jwtKey, 
+				const token = jwt.sign({ id: student._id, username: student.studentNumber }, jwtKey, 
 					{algorithm: 'HS256', expiresIn: jwtExpirySeconds });
 				console.log('token:', token)
 				// set the cookie as the token string, with a similar max age as the token
@@ -181,7 +181,7 @@ exports.welcome = (req, res) => {
 	// Finally, return the welcome message to the user, along with their
 	// username given in the token
 	// use back-quotes here
-	res.send(`${payload.studentNumber}`)
+	res.send(`${payload.username}`)
  };
  //
  //sign out function in controller
@@ -219,7 +219,7 @@ exports.isSignedIn = (req, res) => {
 	}
   
 	// Finally, token is ok, return the username given in the token
-	res.status(200).send({ screen: payload.studentNumber });
+	res.status(200).send({ screen: payload.username });
 }
 
 //isAuthenticated() method to check whether a user is currently authenticated
