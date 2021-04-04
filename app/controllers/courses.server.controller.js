@@ -91,6 +91,7 @@ exports.update = function (req, res) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
+
             });
         } else {
             res.status(200).json(course);

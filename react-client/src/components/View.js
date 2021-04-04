@@ -1,11 +1,10 @@
 import CreateCourse from './CreateCourse';
 import ListCourse from './ListCourses';
 
-import CreateArticle from './CreateArticle';
-import ListArticles from './ListArticles';
 import React, { useState } from 'react';
 //
 import axios from 'axios';
+import { Redirect } from 'react-router';
 //
 function View (props) {
   // read the info from props, coming from the ancestor component
@@ -41,7 +40,11 @@ function View (props) {
   const listCourses = (studentNumber) => {
 
     console.log('in listCourses: ',studentNumber);
-    setArticle('n');
+    try {
+      setArticle('n')
+    } catch (e) {
+      console.log(e);
+    }
   }
   const createCourses = () => {
     console.log('in createCourses')
@@ -59,7 +62,7 @@ function View (props) {
             <button onClick={createCourses}>Create Courses</button>
             <button onClick={listCourses}>List Courses</button>
             <button onClick={deleteCookie}>Log out</button>
-          </div>            
+          </div>
         : <CreateCourse screen={screen} setScreen={setScreen} />
       }
       {
