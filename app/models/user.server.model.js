@@ -7,7 +7,15 @@ const Schema = mongoose.Schema;
 //
 // Define a new 'UserSchema'
 var UserSchema = new Schema({
-	studentNumber:String,
+	studentNumber:{
+		type: String,
+		// Set a unique 'username' index
+		unique: true,
+		// Validate 'username' value existance
+		required: 'Username is required',
+		// Trim the 'username' field
+		trim: true
+	},
 	address: String,
 	city: String,
 	phoneNumber: {
@@ -23,15 +31,6 @@ var UserSchema = new Schema({
 		type: String,
 		// Validate the email format
 		match: [/.+\@.+\..+/, "Please fill a valid email address"]
-	},
-	username: {
-		type: String,
-		// Set a unique 'username' index
-		unique: true,
-		// Validate 'username' value existance
-		required: 'Username is required',
-		// Trim the 'username' field
-		trim: true
 	},
 	password: {
 		type: String,
