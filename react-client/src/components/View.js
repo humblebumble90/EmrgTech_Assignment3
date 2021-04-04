@@ -1,3 +1,6 @@
+import CreateCourse from './CreateCourse';
+import ListCourse from './ListCourses';
+
 import CreateArticle from './CreateArticle';
 import ListArticles from './ListArticles';
 import React, { useState } from 'react';
@@ -35,13 +38,13 @@ function View (props) {
     }
   };
   //
-  const listArticles = (username) => {
+  const listCourses = (studentNumber) => {
 
-    console.log('in lisArticles: ',username);
+    console.log('in listCourses: ',studentNumber);
     setArticle('n');
   }
-  const createArticle = () => {
-    console.log('in createArticle')
+  const createCourses = () => {
+    console.log('in createCourses')
     setArticle('y')
 
   }
@@ -53,16 +56,16 @@ function View (props) {
             <p>{screen}</p>
             <p>{data}</p>
             <button onClick={verifyCookie}>Verify Cookie</button>
-            <button onClick={createArticle}>Create Article</button>
-            <button onClick={listArticles}>List Articles</button>
+            <button onClick={createCourses}>Create Courses</button>
+            <button onClick={listCourses}>List Courses</button>
             <button onClick={deleteCookie}>Log out</button>
           </div>            
-        : <CreateArticle screen={screen} setScreen={setScreen} />
+        : <CreateCourse screen={screen} setScreen={setScreen} />
       }
       {
         article == 'n'
         ?
-        <ListArticles screen={screen} setScreen={setScreen} />
+        <ListCourse screen={screen} setScreen={setScreen} />
         :<div></div>
         
       }

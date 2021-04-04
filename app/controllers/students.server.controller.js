@@ -152,6 +152,7 @@ exports.authenticate = function(req, res, next) {
 //
 // protected page uses the JWT token
 exports.welcome = (req, res) => {
+	console.log('welcoe');
 	// We can obtain the session token from the requests cookies,
 	// which come with every request
 	const token = req.cookies.token

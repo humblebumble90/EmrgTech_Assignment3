@@ -1,26 +1,31 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
+    added: {
+        type: Date,
+        default: Date.now
+    },
     courseCode: {
         type: String,
+        default:'',
         trim: true,
-        required: ' cannot be blank'
+        //required: 'courseCode cannot be blank'
     },
     courseName: {
         type: String,
         default: '',
         trim: true,
-        required: 'cannot be blank'
+        required: 'courseName cannot be blank'
     },
     section: {
         type: String, default: '',
         trim: true,
-        required: ' cannot be blank'
+        required: 'section cannot be blank'
     },
     semester: {
         type: String, default: '',
         trim: true,
-        required: ' cannot be blank'
+        required: 'semester cannot be blank'
     },
     student:{
         type: Schema.ObjectId,

@@ -48,9 +48,9 @@ function ShowCourse(props) {
         <span className="sr-only">Loading...</span>
       </Spinner> }    
       <Jumbotron>
-        <p>CourseCode: {data.CourseCode}</p>
+        <p>CourseCode: {data.courseCode}</p>
         <p>CourseName: {data.courseName}</p>
-        <p>CourseSection: {data.courseSection}</p>
+        <p>CourseSection: {data.section}</p>
         <p>Semester: {data.semester}</p>
 
         <p>
